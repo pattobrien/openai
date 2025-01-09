@@ -1,13 +1,12 @@
 import 'package:dart_openai/src/core/builder/base_api_url.dart';
 import 'package:dart_openai/src/core/networking/client.dart';
+import 'package:http/http.dart' as http;
 
 import '../../core/base/chat/chat.dart';
 import '../../core/constants/strings.dart';
 import '../../core/models/chat/chat.dart';
 import '../../core/models/tool/tool.dart';
 import '../../core/utils/logger.dart';
-
-import 'package:http/http.dart' as http;
 
 /// {@template openai_chat}
 /// This class is responsible for handling all chat requests, such as creating a chat completion for the message(s).
@@ -80,7 +79,7 @@ interface class OpenAIChat implements OpenAIChatBase {
     double? frequencyPenalty,
     Map<String, dynamic>? logitBias,
     String? user,
-    Map<String, String>? responseFormat,
+    Map<String, dynamic>? responseFormat,
     int? seed,
     bool? logprobs,
     int? topLogprobs,
@@ -176,7 +175,7 @@ interface class OpenAIChat implements OpenAIChatBase {
     double? presencePenalty,
     double? frequencyPenalty,
     Map<String, dynamic>? logitBias,
-    Map<String, String>? responseFormat,
+    Map<String, dynamic>? responseFormat,
     int? seed,
     String? user,
     http.Client? client,
@@ -225,7 +224,7 @@ interface class OpenAIChat implements OpenAIChatBase {
     Map<String, dynamic>? logitBias,
     String? user,
     http.Client? client,
-    Map<String, String>? responseFormat,
+    Map<String, dynamic>? responseFormat,
     int? seed,
   }) {
     return OpenAINetworkingClient.postStream<OpenAIStreamChatCompletionModel>(
